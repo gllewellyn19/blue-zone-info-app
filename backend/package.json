@@ -1,0 +1,33 @@
+{
+  "name": "bluezone",
+  "version": "1.0.0",
+  "description": "backend for BlueZone app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server",
+    "deploy": "pm2-runtime server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BleuZone/BlueZone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BleuZone/BlueZone/issues"
+  },
+  "homepage": "https://github.com/BleuZone/BlueZone#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0  ",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "pm2": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
