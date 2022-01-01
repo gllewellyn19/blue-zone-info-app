@@ -1,6 +1,5 @@
 # BlueZone: CompSci 390 Project
-
-See our project here: [http://3.15.39.214:3000/]
+This project was created by Alicia Steiman, Arjun Rao, Grace Llewellyn, Jodi Yeh, Josh Boss, and Zachary Levitan in the class at Duke Collaborative Projects (CS390). 
 
 ## Table of contents
 * [Executive Summary](#executive-summary)
@@ -14,14 +13,14 @@ As Duke students, it's extremely difficult to get candid opinions and thorough i
 	
 ## Dependencies
 
-BlueZone is dependent on a [back-end repository](https://github.com/BleuZone/BlueZone) hosted on GitHub. It consists of the back-end database with routes for the front-end web app to call from (project_BlueZone GitLab repository, this one). This GitHub repository is deployed onto Amazon Web Services (AWS) and axios calls are made from the front-end to the deployed database address.
+BlueZone is dependent on a [back-end repository](https://github.com/BleuZone/BlueZone) hosted on GitHub. It consists of the back-end database with routes for the front-end web app to call from (project\_BlueZone GitLab repository, this one). This GitHub repository is deployed onto Amazon Web Services (AWS) and axios calls are made from the front-end to the deployed database address.
 
 The front-end is dependent on Axios calls to the back-end server as well as semantic-ui for styling. It is dependent on redux as well to allow for a centralized state in a React-app; this way, components don't need to get data just from their parent.
 
 	
 ## Setup
 
-To deploy the [back-end](https://github.com/BleuZone/BlueZone), we need to utiize Docker and Amazon Web Services. After creating the Amazon EC2 container, we [create an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) within the container in order to be able to pull our backend code down from github. After adding that key to GitHub, we can clone our GitHub repository into the container. We can install docker into the ECS container by using `sudo yum install docker`. Start the Docker service, `sudo service docker start` and add the EC2-user (whatever your AWS-EC2 username is) to the Docker group so you don't have to sudo anymore, `sudo usermod -a -G docker ec2-user`.  Now that we have Docker installed and the repository is in the container, cd into the respective directory containing the docker-compose file. In this directory, we need to create an .env file containing the Docker database server information. You can use touch and vim to create and write this file as the GitHub is dependent on those settings. Now run `docker-compose up --build -d` to begin the composition of the volume containing the web and mySQL database images. Navigate to the mySQL database inside docker with `docker exec -it /bin/bash` followed by `mysql -u root -p`, and type in your database password. Add your initial data to the database and when you're done, run `docker-compose down` to shut it down. 
+To deploy the back-end (located in the backend folder), we need to utiize Docker and Amazon Web Services. After creating the Amazon EC2 container, we [create an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) within the container in order to be able to pull our backend code down from github. After adding that key to GitHub, we can clone our GitHub repository into the container. We can install docker into the ECS container by using `sudo yum install docker`. Start the Docker service, `sudo service docker start` and add the EC2-user (whatever your AWS-EC2 username is) to the Docker group so you don't have to sudo anymore, `sudo usermod -a -G docker ec2-user`.  Now that we have Docker installed and the repository is in the container, cd into the respective directory containing the docker-compose file. In this directory, we need to create an .env file containing the Docker database server information. You can use touch and vim to create and write this file as the GitHub is dependent on those settings. Now run `docker-compose up --build -d` to begin the composition of the volume containing the web and mySQL database images. Navigate to the mySQL database inside docker with `docker exec -it /bin/bash` followed by `mysql -u root -p`, and type in your database password. Add your initial data to the database and when you're done, run `docker-compose down` to shut it down. 
 
 On the AWS home page, there should be an IP Address. That is where your server is launched and that is the address the front-end should be connecting and routing from. 
 
